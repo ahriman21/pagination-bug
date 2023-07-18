@@ -1,7 +1,7 @@
 # first create a custom tag and include this function in it:
 
 @register.simple_tag
-def my_url(value, field_name, urlencode=None):
+def fix_pagination(value, field_name, urlencode=None):
     url = '?{}={}'.format(field_name, value)
 
     if urlencode:
