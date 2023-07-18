@@ -1,17 +1,15 @@
-{% load custom_tags %}
 <div class="pagination">
     <span class="step-links">
         {% if queryset.has_previous %}
-            <a href="{% fix_pagination 1 'page' request.GET.urlenode %}">&laquo; first</a>
-            <a href="{% fix_pagination queryset.previus_page_number 'page' request.GET.urlenode %}">previous</a>
+            <a href="{% fix_pagination 1 'page' request.GET.urlencode %}">&laquo; first</a>
+            <a href="{% fix_pagination queryset.previous_page_number 'page' request.GET.urlencode %}">previous</a>
         {% endif %}
 
         <span class="current-page">{{ queryset.number }}</span>
 
         {% if queryset.has_next %}
-            {% if request|get_parameter:'q' %}
-            <a href="{% fix_pagination queryset.next_page_number 'page' request.GET.urlenode %}">next</a>
-            <a href="{% fix_pagination queryset.paginator_numpages 'page' request.GET.urlenode %}">last &raquo;</a>
+            <a href="{% fix_pagination queryset.next_page_number 'page' request.GET.urlencode %}">next</a>
+            <a href="{% fix_pagination queryset.paginator.num_pages 'page' request.GET.urlencode %}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
